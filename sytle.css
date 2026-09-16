@@ -35,6 +35,32 @@ header{
 
 .board{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
+    padding: 10px;
+}
+
+.board article{
+    width: 45%;
+    height: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(112, 155, 234);
+}
+
+.infoboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.infoboard article{
+    width: 45%;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgb(112, 155, 234);
 }
