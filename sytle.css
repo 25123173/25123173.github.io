@@ -1,10 +1,13 @@
 body{
     font-family: Arial, sans-serif;
+    background-image: url('./img/background.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .box {
     display: inline-block;
-    background-color: #3498db;
+    background-color: #19567e;
     color: white;
     padding: 15px 30px;
     border-radius: 25px;
@@ -16,13 +19,13 @@ body{
 }
 
 .box:hover {
-    background-color: #217dbb;
+    background-color: #19567e;
     transform: scale(1.10);
 }
 
 .line{
     height: 5px;
-    background-color: #3498db;
+    background-color: #187abc;
 }
 
 header{
@@ -30,7 +33,7 @@ header{
     display: block;
     padding: 10px;
     border-radius: 20px;
-    background-color: rgb(147, 144, 144);
+    background-color: rgb(126, 121, 121);
 }
 
 .board{
@@ -46,7 +49,7 @@ header{
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    background-color: rgb(112, 155, 234);
+    background-color: #1a76b4;
 }
 
 .infoboard{
@@ -62,5 +65,5 @@ header{
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    background-color: rgb(112, 155, 234);
+    background-color: rgb(53, 119, 242);
 }
