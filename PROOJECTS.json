@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Project 1: portfolio website",
+    "description": "Als eerste opdracht voor multilayer webapplications moest ik een website maken die ik later kan gebruiken als portfolio, wat een goed idee is ik ga proberen deze website te updaten wanneer ik kan maar ik kan het niet altijd doen.",
+    "tag": "webdevelopment",
+    "talen": "html, css, javascript",
+    "link": "https://github.com/25123173/25123173.github.io"
+  },
+  {
+    "title": "Project 2: semester 3 project",
+    "description": "voor mijn 3de semester en als groot groep project gaan wij een game applicatie maken, meer infomartie later.",
+    "tag": "games",
+    "talen": "html, css, javascript",
+    "link": "https://github.com/Serzat/Project-Gameflow"
+  }
+]

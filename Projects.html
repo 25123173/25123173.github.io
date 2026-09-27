@@ -7,36 +7,39 @@
 
     <link rel="stylesheet" href="sytle.css">
 </head>
-<body>
+<body class="fix">
     <nav>
         <section>
+            
             <a href="index.html" class="box">Back to Home</a>
-            <a href="Blog.html" class="box">Blog</a>
             <a href="About.html" class="box">About</a>
+            <a href="Blog.html" class="box">Blog</a>
+
         </section>
     </nav>
     
     <hr class="line">
-    <header>
-        <h2>Projects</h2>
-    </header>
 
-    <hr class="line">
+    <section class="filtersectie">
+        <div class="project-controls">
 
-    <search class="infoboard">
-        <article class="posts">
-            <h2>Project 1: deze website</h2>
-            <p>Ik moest een website maken als opdracht en omdat ik een plek moet die ik kan gebruiken als portfolio.</p>
-            <p>Ik heb nu alles redelijk simpel gehouden maar kan later nog uitbreiden.</p>
-            <a href="https://github.com/25123173/25123173.github.io"> github pagina</a>
-        </article>
+            <input type="text" id="search" placeholder="Zoek een project..."></input>
 
-        <article class="posts">
-            <h2>Project 2: schoolproject</h2>
-            <p>Als grote opdracht voor semester 3 moet er een webapplicatie gemaakt worden.</p>
-            <p>Er is nu nog weinig gemaakt omdat het pas begonnen is.</p>
-            <a href="https://github.com/Serzat/Project-Gameflowt"> github pagina</a>
-    </search>
+            <div class="filters">
+                <button data-filter="all">Alle</button>
+                <button data-filter="webdevelopment">Web Development</button>
+                <button data-filter="games">Games</button>
+             </div>
 
+        </div>
+
+    </section>
+    
+    <section class="posts">
+        
+        <div id="project-container"></div>
+    
+    </section>
+    <script src="./goodstuff.js"></script>
 </body>
 </html>

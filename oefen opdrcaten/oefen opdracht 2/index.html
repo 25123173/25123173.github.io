@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>suggestion form</title>
+</head>
+<body>
+    <form action="index.html" method="post">
+        <label for="name">Name:</label>
+        <input id="name" required minlength="2" aria-describedby="naam-error" aria-invalid="false">
+        <span id="naam-error" role="alert"></span>
+    
+        <label for="email">Email:</label>
+        <input id="email" type="email" required aria-describedby="email-error" aria-invalid="false">
+        <span id="email-error" role="alert"></span>
+
+        <label for="Suggestion">Suggestion:</label>
+        <textarea id="suggestion" required minlength="10" aria-describedby="suggestion-error" aria-invalid="false"></textarea>
+        <span id="suggestion-error" role="alert"></span>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="AAA.js"></script>
+</body>
+</html>

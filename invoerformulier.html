@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dunno what to name it</title>
+
+    <link rel="stylesheet" href="sytle.css">
+</head>
+
+<body>
+    <nav>
+        <section>
+            <a href="index.html" class="box">Back to Home</a>
+            <a href="About.html" class="box">About</a>
+            <a href="Projects.html" class="box">Projects</a>
+            <a href="Blog.html" class="box">Blog</a>
+        </section>
+    </nav>
+
+    <hr class="line">
+
+    <form id="contact-form" novalidate>
+        <label for="naam">Naam</label>
+        <input id="naam" required minlength="2" aria-describedby="naam-error" aria-invalid="false">
+        <span id="naam-error" role="alert"></span>
+        
+        <label for="email">E-mail</label>
+        <input id="email" type="email" required aria-describedby="email-error" aria-invalid="false">
+        <span id="email-error" role="alert"></span>
+
+        <label for="bericht">Bericht</label>
+        <textarea id="bericht" required minlength="10" aria-describedby="bericht-error" ariainvalid="false"></textarea>
+        <span id="bericht-error" role="alert"></span>
+
+        <button type="submit">Versturen</button>
+        <div id="form-status" aria-live="polite"></div>
+    </form>
+    <script src="./formulier.js"></script>
+</body>
+</html>
