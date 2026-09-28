@@ -1,26 +1,4 @@
-fetch("PROOJECTS.json")
-  .then(response => response.json())
-  .then(projects => {
-    const container = document.getElementById("project-container");
-
-    projects.forEach(project => {
-      container.innerHTML += `
-        <article class="project">
-
-          <div class="project-content">
-            <h2>${project.title}</h2>
-            <p>${project.description}</p>
-
-            <a href="${project.link}">
-              Bekijk project
-            </a>
-          </div>
-        </article>
-      `;
-    });
-  });
-
-  let projects = [];
+let projects = [];
 let currentFilter = "all";
 
 const projectContainer = document.getElementById("project-container");

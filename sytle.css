@@ -83,6 +83,13 @@ html, body {
   gap: 50px;
 }
 
+.apifact{
+  background: #19567e;
+  color: white;
+  padding: 5px;
+  border-radius: 25px;
+}
+
 .posts{
   width: 50%;
   margin: 10px;
