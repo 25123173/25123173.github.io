@@ -1,110 +1,127 @@
+function normalizeCategory(category) {
+    return (category || "")
+        .toLowerCase()
+        .replace(/[\s-]/g, "");
+}
+
 let projects = [];
 let currentFilter = "all";
 
+// HTML-elementen ophalen
 const projectContainer = document.getElementById("project-container");
 const searchInput = document.getElementById("search");
 const filterButtons = document.querySelectorAll("[data-filter]");
 
-// JSON ophalen
-fetch("./PROOJECTS.json")
-    .then(response => response.json())
-    .then(data => {
-        projects = data;
+// PROJECTEN OPHALEN
+
+async function loadProjects() {
+    try {
+        projectContainer.textContent = "Projecten laden...";
+
+        projects = await getProjects();
+
         displayProjects();
-    })
-    .catch(error => {
-        console.error("Er ging iets mis bij het laden van de projecten:", error);
-    });
 
+    } catch (error) {
+        console.error("Fout bij ophalen projecten:", error);
 
-// Projecten tonen
+        projectContainer.textContent =
+            "Er ging iets mis bij het ophalen van projecten.";
+    }
+}
+
+// FILTER EN ZOEKFUNCTIE
+
 function displayProjects() {
 
     const searchTerm = searchInput.value.toLowerCase();
 
     const filteredProjects = projects.filter(project => {
 
-        // Filter op categorie
+        // Categorie filter
+        const category = normalizeCategory(project.categorie);
+
         const matchesFilter =
             currentFilter === "all" ||
-            project.tag.toLowerCase() === currentFilter;
+            category === currentFilter;
 
-        // Filter op zoekterm
+        // Zoekfunctie
         const matchesSearch =
-            project.title.toLowerCase().includes(searchTerm) ||
-            project.description.toLowerCase().includes(searchTerm) ||
-            project.talen.toLowerCase().includes(searchTerm);
+            (project.titel || "").toLowerCase().includes(searchTerm) ||
+            (project.beschrijving || "").toLowerCase().includes(searchTerm) ||
+            category.includes(searchTerm) ||
+            (project.gitHubUrl || "").toLowerCase().includes(searchTerm);
 
         return matchesFilter && matchesSearch;
     });
 
 
     // Oude projecten verwijderen
-    projectContainer.innerHTML = "";
+    projectContainer.replaceChildren();
 
 
     // Geen resultaten
     if (filteredProjects.length === 0) {
-        projectContainer.innerHTML = "<p>Geen projecten gevonden.</p>";
+        projectContainer.textContent = "Geen projecten gevonden.";
         return;
     }
 
 
-    // Projecten maken
+    // Projecten weergeven
     filteredProjects.forEach(project => {
 
         const projectElement = document.createElement("article");
 
         projectElement.classList.add("project");
 
-        projectElement.innerHTML = `
-            <h2>${project.title}</h2>
+        const title = document.createElement("h2");
+        title.textContent = project.titel;
 
-            <p>${project.description}</p>
+        const description = document.createElement("p");
+        description.textContent = project.beschrijving;
 
-            <p>
-                <strong>Categorie:</strong> ${project.tag}
-            </p>
+        const category = document.createElement("p");
+        category.innerHTML = "<strong>Categorie:</strong> ";
 
-            <p>
-                <strong>Talen:</strong> ${project.talen}
-            </p>
+        const categoryText = document.createTextNode(project.categorie);
+        category.appendChild(categoryText);
 
-            <a href="${project.link}" target="_blank">
-                Bekijk project
-            </a>
-        `;
+        projectElement.appendChild(title);
+        projectElement.appendChild(description);
+        projectElement.appendChild(category);
+
+
+        // GitHub-link
+        if (project.gitHubUrl) {
+            const link = document.createElement("a");
+
+            link.href = project.gitHubUrl;
+            link.textContent = "Bekijk project";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            projectElement.appendChild(link);
+        }
 
         projectContainer.appendChild(projectElement);
     });
 }
 
+// ZOEKFUNCTIE
 
-// Zoekfunctie
 searchInput.addEventListener("input", () => {
     displayProjects();
 });
 
-
-// Filterknoppen
-filterButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        currentFilter = button.dataset.filter;
-
-        displayProjects();
-
-    });
-
-});
+// FILTERKNOPPEN
 
 filterButtons.forEach(button => {
 
     button.addEventListener("click", () => {
 
-        currentFilter = button.dataset.filter;
+        currentFilter = button.dataset.filter.toLowerCase();
 
+        // Actieve knop aanpassen
         filterButtons.forEach(btn => {
             btn.classList.remove("active");
         });
@@ -115,3 +132,7 @@ filterButtons.forEach(button => {
     });
 
 });
+
+// PROJECTEN LADEN BIJ START
+
+loadProjects();

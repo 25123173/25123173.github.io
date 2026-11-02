@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio beheer</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+<body>
+
+    <nav>
+        <section>
+            <a href="index.html" class="box">Back to Home</a>
+            <a href="Projects.html" class="box">Projecten</a>
+            <a href="blog.html" class="box">Blog</a>
+        </section>
+    </nav>
+
+    <hr class="line">
+
+    <!-- PROJECTEN BEHEREN -->
+
+    <section id="projectbeheersectie">
+        <h2>Projecten beheren</h2>
+
+        <form id="project-form">
+            <h3 id="project-form-title">Nieuw project toevoegen</h3>
+
+            <label for="project-titel">Titel</label>
+            <input id="project-titel" required>
+
+            <label for="project-beschrijving">Beschrijving</label>
+            <textarea id="project-beschrijving"></textarea>
+
+            <label for="project-categorie">Categorie</label>
+            <input id="project-categorie">
+
+            <label for="project-github">GitHub URL</label>
+            <input id="project-github" type="url">
+
+            <button type="submit">Opslaan</button>
+            <button type="button" id="cancel-project-edit" hidden>
+                Annuleren
+            </button>
+        </form>
+
+        <h3>Bestaande projecten</h3>
+        <div id="beheer-projects"></div>
+    </section>
+
+    <!-- BLOGPOSTS BEHEREN -->
+
+    <section id="blogbeheersectie">
+        <h2>Blogposts beheren</h2>
+
+        <form id="blog-form">
+            <h3 id="blog-form-title">Nieuwe blogpost toevoegen</h3>
+
+            <label for="blog-titel">Titel</label>
+            <input id="blog-titel" required>
+
+            <label for="blog-inhoud">Inhoud</label>
+            <textarea id="blog-inhoud" required></textarea>
+
+            <button type="submit">Opslaan</button>
+            <button type="button" id="cancel-blog-edit" hidden>
+                Annuleren
+            </button>
+        </form>
+
+        <h3>Bestaande blogposts</h3>
+        <div id="beheer-blogs"></div>
+    </section>
+
+    <p id="beheer-status" role="status"></p>
+
+    <script src="../controller/mainapi.js"></script>
+    <script src="../controller/beheer.js"></script>
+
+</body>
+</html>
